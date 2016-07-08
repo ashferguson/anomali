@@ -1,0 +1,24 @@
+{
+  "name": "anomali",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashferguson/anomali.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashferguson/anomali/issues"
+  },
+  "homepage": "https://github.com/ashferguson/anomali#readme",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "connect": "^3.4.1",
+    "serve-static": "^1.11.1"
+  }
+}
