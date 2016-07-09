@@ -1,0 +1,184 @@
+.register-container{
+    display: flex;
+}
+.createForm {
+    margin: 20px;
+    min-width: 500px;
+    width: 55%;
+    transform: translateX(5%);
+}
+.registerForm {
+    display: flex;
+    background-color: #e3e3e3;
+}
+.form-fields{
+    flex-grow: 1;
+}
+.form-labels {
+    display: flex;
+    margin: 15px 10px 0 10px;
+}
+.form-labels>label{
+    flex-basis: 50%;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+.form-labels>label:nth-child(2){
+    margin-left: 20px;
+}
+.form-inputs {
+    margin: 5px 0;
+    display: flex;
+    position:relative;
+}
+.form-inputs>input:nth-child(2){
+    margin-left: 10px;
+}
+.register-input {
+    flex: 1;
+    height: 25px;
+    margin: 5px 10px;
+}
+
+.input_img {
+     position: absolute;
+     bottom: 12px;
+     left: 45%;
+     height: 10px;
+ }
+#input_img2 {
+    position: absolute;
+    bottom: 12px;
+    left: 95%;
+    height: 10px;
+}
+.create-form-dd{
+    background-color: white;
+    flex: 1;
+    height: 25px;
+    margin: 0 10px;
+}
+
+.zip-input{
+    flex: 1;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.form-inputs input[type="text"] {
+    position: relative;
+}
+/*input icon placeholders*/
+/* webkit solution */
+::-webkit-input-placeholder {
+    text-align:right;
+    padding-right:5px;
+}
+/* mozilla solution */
+input::-moz-placeholder {
+    text-align: right;
+    padding-right: 5px;
+}
+
+input { font-family: 'FontAwesome'; }
+
+.inputBtnSection{
+    cursor: pointer !important;
+    vertical-align:top;
+    font-family: "GE Inspira Sans",  sans-serif;
+    flex-basis: 50%;
+}
+
+.input-bottom-group {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    float: right;
+}
+
+.registerForm input.ng-invalid.ng-touched {
+    border: 1px solid  #e53838;
+}
+.registerForm select:disabled{
+    cursor: not-allowed;
+}
+
+
+.inputBtnSection{
+    cursor: pointer !important;
+    display:inline-block;
+    vertical-align:top;
+//font-size:0;
+    font-family: "GE Inspira Sans",  sans-serif;
+}
+
+.error {
+    font-family: sans-serif;
+    font-size: 14px;
+    flex: 1;
+    color: red;
+    margin-left: 10px;
+}
+.error-labels {
+
+    display: flex;
+}
+/*beware we are overriding the first element in the errors when it is not shown!*/
+.error.ng-hide {
+    /* this is just another form of hiding an element */
+    display: flex!important;
+    position: relative;
+    color: #e3e3e3;
+    font-size: 0;
+    flex:1;
+}
+.error:nth-child(2){
+    flex:1
+}
+.registerForm input.ng-invalid.ng-dirty {
+    border: 1px solid  #e53838;
+}
+.registerForm input.ng-invalid.ng-touched.ng-invalid-pattern {
+    border: 1px solid  #e53838;
+}
+
+.validation-error input.ng-invalid, input.ng-invalid-pattern {
+    border: 1px solid  #e53838;
+}
+
+.validation-error-dd.ng-invalid.ng-touched{
+    border: 1px solid  #e53838;
+}
+
+.terms{
+    margin:10px;
+}
+.terms span{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
+p{
+    font-family: sans-serif;
+    font-size: 12px;
+    margin-left:30px;
+}
+a{
+    font-family: sans-serif;
+    font-size: 12px;
+    color: blue;
+    text-decoration: none;
+}
+.submit-btn{
+    color: white;
+    background-color: green;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0% 45%;
+}
+input[type=submit]:disabled{
+   opacity: 0.5;
+    cursor: not-allowed;
+}
+

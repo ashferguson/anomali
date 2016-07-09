@@ -1,0 +1,173 @@
+<html>
+<head>
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+
+</head>
+<body ng-app="anomaliForm" ng-controller="mainController">
+    <div class="register-container">
+
+        <div class="createForm">
+            <form novalidate name="registerForm" class="registerForm">
+                <fieldset class="form-fields">
+
+                    <!-- fields for names-->
+                    <div class="form-field">
+                        <div class="form-labels">
+                            <label for="firstName">FIRST NAME*</label>
+                            <label for="lastName">LAST NAME* </label>
+                        </div>
+
+                        <div class="form-inputs">
+                            <!--names should only include letters and spaces-->
+                            <input id="firstName" class="register-input" type="text" ng-model="form.firstName"
+                                   name="firstName" ng-pattern="/^[a-zA-Z\- ]*$/" ng-trim="true" required="">
+                            <img src="user.png" class="input_img">
+                            <input id="lastName" class="register-input" type="text"  placeholder="" ng-model="form.lastName"
+                                   name="lastName"  ng-pattern="/^[a-zA-Z\- ]*$/" ng-trim="true" required="">
+                        </div>
+
+                        <!--display errors-->
+                        <div class="error-labels">
+                            <label class="error" ng-show="registerForm.firstName.$error.pattern || (registerForm.firstName.$touched &&registerForm.firstName.$error.required)">Not a valid first name</label>
+                            <label class="error error-two" ng-show="registerForm.lastName.$error.pattern || (registerForm.lastName.$touched &&registerForm.lastName.$error.required)">Not a valid last name</label>
+                        </div>
+                    </div>
+
+                    <!--Company information-->
+                    <div class="form-field">
+                        <div class="form-labels">
+                            <label for=companyName>COMPANY NAME*</label>
+                        </div>
+
+                        <div class="form-inputs">
+                            <input id="companyName" class="register-input" type="text" placeholder="" ng-model="form.companyName"
+                                   name="companyName"  required="" >
+
+                        </div>
+                        <!--dispaly errors-->
+                        <div class="error" ng-show="registerForm.companyName.$touched &&registerForm.companyName.$error.required">Company Name is required</div>
+                    </div>
+
+                    <!--Email inputs-->
+                    <div class="form-field">
+                        <div class="form-labels">
+                            <label for="workEmail">WORK EMAIL*</label>
+                        </div>
+
+                        <div class="form-inputs">
+                            <input id="workEmail" class="register-input" type="email" placeholder="" ng-model="form.workEmail"
+                                   name="workEmail"  required="" >
+
+                        </div>
+                        <!--display error-->
+                        <div class="error" ng-show="(registerForm.workEmail.$touched &&registerForm.workEmail.$error.required)|| registerForm.workEmail.$error.email">Not a valid email</div>
+                    </div>
+
+                    <!--Phone Number-->
+                    <div class="form-field">
+                        <div class="form-labels">
+                            <label for="phone">PHONE NUMBER*</label>
+                        </div>
+
+                        <div class="form-inputs">
+                            <!--number should only include number and dashes-->
+                            <input id="phone" class="register-input" type="text" placeholder="" ng-model="form.phone"
+                                   name="phone" ng-pattern="/^[0-9\-]*$/" required="" >
+
+                        </div>
+                        <!--display error-->
+                        <div class="error" ng-show="registerForm.phone.$error.pattern || (registerForm.phone.$touched &&registerForm.phone.$error.required)">Not a valid phone number</div>
+                    </div>
+
+                    <!-- Drop down country: if US select state-->
+                    <div class="form-field">
+                        <div class="form-labels">
+
+                            <label for="country">COUNTRY*</label>
+                            <label for="state">STATE*</label>
+                        </div>
+                        <div class="form-inputs">
+
+                            <select id="country" ng-model="form.country" ng-options="country as country.name for country in countries track by country.name"
+                                    required="" name="country"  class="create-form-dd" ng-class="{true: 'validation-error-dd'}[registerForm.country.$error.required]">
+                                <option value="">-Please Select-</option>
+                            </select>
+
+                            <select id="state" ng-model="form.state" ng-options="state as state.name for state in states" ng-disabled="stateDisabled"
+                                    ng-required="stateRequired" name="state"  class="create-form-dd" ng-class="{true: 'validation-error-dd'}[registerForm.state.$error.required]" >
+                                <option value="">-Please Select (US only)-</option>
+                            </select>
+
+                        </div>
+                        <div class="error-labels">
+                            <div class="error" ng-show="registerForm.country.$touched &&registerForm.country.$error.required">Please select a country</div>
+                            <div class="error error-two" ng-show="registerForm.state.$touched &&registerForm.state.$error.required">Please select a state</div>
+                        </div>
+                    </div>
+
+                    <!--fields for industry and zip-->
+                    <div class="form-field">
+                        <div class="form-labels">
+
+                            <label for="industry">INDUSTRY*</label>
+                            <label for="zip">ZIP/POSTAL*</label>
+                        </div>
+                        <div class="form-inputs">
+
+                            <select id="industry" ng-model="form.industry" ng-options=" industry for industry in industries"
+                                    required="" name="industry"  class="create-form-dd" ng-class="{true: 'validation-error-dd'}[registerForm.industry.$error.required]" >
+                                <option value="">-Please Select-</option>
+                            </select>
+
+                            <input id="zip" class="zip-input" type="text" placeholder="" ng-model="form.zip"
+                                   name="zip" required="">
+
+                        </div>
+                        <div class="error-labels">
+                            <div class="error" ng-show="registerForm.industry.$touched &&registerForm.industry.$error.required">Please select an industry</div>
+                            <div class="error error-two" ng-show="registerForm.zip.$touched &&registerForm.zip.$error.required">Please enter a zip or postal code</div>
+                        </div>
+                    </div>
+
+                    <!--fields for password-->
+                    <div class="form-field">
+                        <div class="form-labels">
+                            <label for=password>PASSWORD*</label>
+                            <label for=confirmPassword>CONFIRM PASSWORD*</label>
+                        </div>
+
+                        <div class="form-inputs">
+                            <!--password must include 1 uppercase, 1 lowercase, 1 special char and least 8 chars-->
+                            <input id="password" class="register-input" type="password" ng-model="form.password"
+                                   name="password" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[_!@#\$%\^&\*])(?=.{8,})/" required="" >
+                            <img src="lock.png" class="input_img">
+                            <input id="confirmPassword" class="register-input" type="password"
+                                   required="" name="confirmPassword" ng-model="form.confirmPassword" ng-pattern="form.password">
+                            <img src="lock.png" id="input_img2">
+                        </div>
+                        <div class="error-labels">
+                            <div class="error" ng-show="registerForm.password.$touched && registerForm.password.$error.pattern">Not a valid password</div>
+                            <div class="error error-two" ng-show="(registerForm.confirmPassword.$error.pattern )|| (registerForm.confirmPassword.$touched &&registerForm.confirmPassword.$error.required)">Passwords do not match</div>
+                        </div>
+                    </div>
+
+
+                    <!-- fields for terms-->
+                    <div class="terms">
+
+                        <input class="btn" type="checkbox" value="Cancel" ng-model="form.accepted" required="">
+                        <span>INTERESTED IN BECOMING A PARTNER</span>
+                        <p>By clicking Register, you agree to Anomali's <a href="">Terms of Use</a> and <a href="">Privacy Policy</a></p>
+                        <input class="submit-btn" type="submit" value="REGISTER" ng-disabled="(registerForm.$invalid)" ng-click="submitForm(analytic)">
+                    </div>
+                </fieldset>
+
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
